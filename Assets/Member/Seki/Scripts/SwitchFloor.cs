@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SwitchFloor : MonoBehaviour
 {
+
+    public GameObject door;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,14 @@ public class SwitchFloor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.layer==8)
+        door.SetActive(false);
         Debug.Log(collision.gameObject);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 8)
+            door.SetActive(true);
     }
 }
